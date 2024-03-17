@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Home from "./screens/homepage/Home";
+import SignInForm from "./components/homepage/SignInForm";
+import SignUpForm from "./components/homepage/SignUpForm";
+import Movies from "./components/homepage/Movies";
+import AdminHome from "./screens/admin/AdminHome";
+import Footer from "./components/homepage/Footer";
+import MovieDetails from "./components/homepage/MovieDetails";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<SignInForm />} />
+        <Route path="/register" element={<SignUpForm />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
